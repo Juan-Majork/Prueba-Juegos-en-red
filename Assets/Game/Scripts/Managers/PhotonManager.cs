@@ -4,29 +4,24 @@ using System;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
+    public static PhotonManager Instance;
+
     [SerializeField] public string lobbyName;
-
-    [SerializeField] private GameObject playerPrefab;
-
-    [SerializeField] private GameObject obstaclesPrefab;
-
-    public static PhotonManager instance;
 
     private Action OnRoom;
 
-    private bool IsMaster;
+    private bool isMaster;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
             Destroy(this);
         }
-
         
     }
 
@@ -52,25 +47,18 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         string roomName = PhotonNetwork.CurrentRoom.Name;
         int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
 
-        IsMaster = PhotonNetwork.IsMasterClient;
+        isMaster = PhotonNetwork.IsMasterClient;
 
-        if (IsMaster)
+        if (isMaster)
         {
-            SpawnObjects();
+            GameManager.Instance.InitializeGame();
         }
 
-        SpawnPlayer();
+        GameManager.Instance.SpawnPlayer();
     }
 
-    public void SpawnPlayer()
+    public void SpawnObject(string name, Vector3 position, Quaternion rotation)
     {
-        PhotonNetwork.Instantiate(playerPrefab.name, transform.position, Quaternion.identity, group: 0);
-    }
-
-    public void SpawnObjects()
-    {
-        PhotonNetwork.Instantiate(obstaclesPrefab.name, new Vector3 (0, 0.5f, 0), Quaternion.identity, group: 0);
-
-
+        PhotonNetwork.Instantiate(name, position, rotation, group: 0);
     }
 }
