@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6970630853260000000}
   - component: {fileID: 2066605617290913889}
   - component: {fileID: 609160349209702057}
-  - component: {fileID: 7222963831633674432}
   - component: {fileID: 3574828983131439137}
   - component: {fileID: 6523637905064568764}
+  - component: {fileID: -5735657926843360298}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -135,44 +135,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 7222963831633674432}
   - {fileID: 3574828983131439137}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7222963831633674432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4103962590609860660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonTransformViewClassic
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
 --- !u!114 &3574828983131439137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfce59fb0635764db1897d69c4b9886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomTransformSync
+  smoothTransition: 1
 --- !u!114 &6523637905064568764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +182,16 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-5735657926843360298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103962590609860660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1af4053c97ce154baed1780ae9c6018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  speed: 20

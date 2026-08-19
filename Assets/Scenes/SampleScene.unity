@@ -286,9 +286,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   player: {fileID: 4103962590609860660, guid: f29ced91fdddb514f844d6a2af138904, type: 3}
-  obstacle: {fileID: 0}
-  playerSpawn: {fileID: 0}
-  obstSpawn: []
+  obstacle: {fileID: 7263396503270502004, guid: 12b25970820e67c4d99fc5d6763a3d02, type: 3}
+  playerSpawn: {fileID: 1933835926}
+  obstSpawn:
+  - {fileID: 1481814355}
+  - {fileID: 984067300}
+  - {fileID: 734751707}
+  - {fileID: 1266672059}
 --- !u!4 &347679805
 Transform:
   m_ObjectHideFlags: 0
@@ -810,7 +814,7 @@ Transform:
   m_GameObject: {fileID: 2114874613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1917, y: 0, z: 0.11}
+  m_LocalPosition: {x: -1.1917, y: -1.36, z: 0.11}
   m_LocalScale: {x: 2.3166, y: 1, z: 2.4744}
   m_ConstrainProportionsScale: 0
   m_Children: []
