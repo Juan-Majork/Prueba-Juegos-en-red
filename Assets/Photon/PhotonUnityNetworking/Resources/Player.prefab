@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfce59fb0635764db1897d69c4b9886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomTransformSync
-  smoothTransition: 1
+  smoothTransition: 25
 --- !u!114 &6523637905064568764
 MonoBehaviour:
   m_ObjectHideFlags: 0
