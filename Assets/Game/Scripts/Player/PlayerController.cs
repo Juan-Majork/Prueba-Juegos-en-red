@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviourPun
     void Update()
     {
         if (!photonView.IsMine) return;
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        if (direction.sqrMagnitude > 0.001f)
+            transform.rotation = Quaternion.LookRotation(direction);
 
         Attack();
     }
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviourPun
     {
         if (Input.GetMouseButtonDown(0))
         {
-            PhotonNetwork.InstantiateRoomObject(bullet.name, bulletSpawn.transform.position, bulletSpawn.transform.rotation, group: 0);
+            PhotonManager.Instance.SpawnObject(bullet.name, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
         }
     }
 }
