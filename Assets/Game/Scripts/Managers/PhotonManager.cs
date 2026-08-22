@@ -5,12 +5,13 @@ using System;
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
     public static PhotonManager Instance;
+    
+    private GameManager gm;
 
     [SerializeField] public string lobbyName;
+    private bool isMaster;
 
     private Action OnRoom;
-
-    private bool isMaster;
 
     private void Awake()
     {
@@ -22,11 +23,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             Destroy(this);
         }
-        
     }
 
     private void Start()
     {
+        gm = GameManager.Instance;
+        gm.Pm = this;
+
+        OnRoom += MasterGameStart;
+
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -44,6 +49,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        OnRoom?.Invoke();
+    }
+
+    private void MasterGameStart()
+    {
         string roomName = PhotonNetwork.CurrentRoom.Name;
         int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
 
@@ -51,14 +61,26 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         if (isMaster)
         {
-            GameManager.Instance.InitializeGame();
+            //gm.InitializeGame();
         }
 
-        GameManager.Instance.SpawnPlayer();
+        if (playerCount < 4)
+        {
+            gm.SpawnPlayer(playerCount);
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
 
     public void SpawnObject(string name, Vector3 position, Quaternion rotation)
     {
         PhotonNetwork.Instantiate(name, position, rotation, group: 0);
+    }
+
+    public void SpawnRoomObject(string name, Vector3 position, Quaternion rotation)
+    {
+        PhotonNetwork.InstantiateRoomObject(name, position, rotation, group: 0);
     }
 }
