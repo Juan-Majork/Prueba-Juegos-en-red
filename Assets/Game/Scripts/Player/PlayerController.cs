@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviourPun
         if (direction.sqrMagnitude > 0.001f)
             transform.rotation = Quaternion.LookRotation(direction);
 
+        counterCD += Time.deltaTime;
         Attack();
     }
 
@@ -34,7 +35,6 @@ public class PlayerController : MonoBehaviourPun
     [PunRPC]
     private void Attack()
     {
-        counterCD += Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && counterCD > attackCD)
         {
             counterCD = 0;

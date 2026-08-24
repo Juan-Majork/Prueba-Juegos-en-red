@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1af4053c97ce154baed1780ae9c6018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  speed: 20
+  speed: 3
   bullet: {fileID: 4326247822755256063, guid: 2bd1157a002dfdf419c7aeaa22293073, type: 3}
   bulletSpawn: {fileID: 1099699619843576382}
   health: {fileID: 4249145555695436167}

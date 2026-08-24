@@ -9,7 +9,6 @@ public class HealthComponent : MonoBehaviourPun
     {
         if(TakeDamage(damageTaken) <= 0)
         {
-            Destroy(gameObject);
             Application.Quit();
         }
     }

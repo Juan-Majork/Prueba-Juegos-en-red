@@ -23,7 +23,7 @@ public class BulletMovement : MonoBehaviourPun
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !photonView.IsMine)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
