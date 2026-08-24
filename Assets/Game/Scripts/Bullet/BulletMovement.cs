@@ -27,7 +27,7 @@ public class BulletMovement : MonoBehaviourPun
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-            player.TakeDamage(30);
+            player.photonView.RPC("TakeDamage", RpcTarget.All, 30f);
             Destroy(gameObject);
         }
 

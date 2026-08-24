@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviourPun
         direction.y = 0f;
     }
 
-    [PunRPC]
+
     private void Attack()
     {
         if (Input.GetMouseButtonDown(0) && counterCD > attackCD)
@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
+    [PunRPC]
     public void TakeDamage(float damage)
     {
         health.OnHitted(damage);
