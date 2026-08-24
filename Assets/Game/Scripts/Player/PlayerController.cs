@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviourPun
         direction.y = 0f;
     }
 
+    [PunRPC]
     private void Attack()
     {
         counterCD += Time.deltaTime;
