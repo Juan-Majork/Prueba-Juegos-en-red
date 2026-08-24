@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6188824720389010267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3310876266647138469}
   - component: {fileID: 4418074744050373904}
   - component: {fileID: 7437579625498001432}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4994574484348830716}
   - component: {fileID: 3658629173043924908}
   - component: {fileID: 568998219991140286}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 7090011827232801933}
   - component: {fileID: 9069837984720984361}
   - component: {fileID: 1568068974332263349}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,8 @@ GameObject:
   - component: {fileID: 3574828983131439137}
   - component: {fileID: 6523637905064568764}
   - component: {fileID: -5735657926843360298}
-  m_Layer: 0
+  - component: {fileID: 4249145555695436167}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfce59fb0635764db1897d69c4b9886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomTransformSync
-  smoothTransition: 50
+  smoothTransition: 100
 --- !u!114 &6523637905064568764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -573,6 +574,20 @@ MonoBehaviour:
   speed: 20
   bullet: {fileID: 4326247822755256063, guid: 2bd1157a002dfdf419c7aeaa22293073, type: 3}
   bulletSpawn: {fileID: 1099699619843576382}
+  health: {fileID: 4249145555695436167}
+--- !u!114 &4249145555695436167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103962590609860660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f517b18bdf4b14468b73be8eac02058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  health: 100
 --- !u!1 &4996560551930352115
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +599,7 @@ GameObject:
   - component: {fileID: 957655080027660017}
   - component: {fileID: 5874813728546083455}
   - component: {fileID: 2033155001373143250}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

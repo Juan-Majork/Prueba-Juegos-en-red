@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] private float speed;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject bulletSpawn;
+    [SerializeField] private HealthComponent health;
+    
     private Vector3 direction;
 
     void Update()
@@ -32,5 +34,10 @@ public class PlayerController : MonoBehaviourPun
         {
             PhotonManager.Instance.SpawnObject(bullet.name, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health.OnHitted(damage);
     }
 }

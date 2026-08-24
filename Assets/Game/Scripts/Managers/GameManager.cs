@@ -28,34 +28,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void InitializeGame()
-    {
-        List<int> ints = new List<int>();
-        SpawnerSelector(ints);
-        foreach (int i in ints)
-            pm.SpawnRoomObject(obstacle.name, obstSpawn[i].transform.position, Quaternion.identity);
-    }
-
-    private List<int> SpawnerSelector(List<int> ints)
-    {
-        int insert = Random.Range(0, obstSpawn.Count - 1);
-
-        if (ints.Count < obstLimit)
-        {
-            if (!ints.Contains(insert))
-            {
-                ints.Add(insert);
-            }
-            else
-            {
-                return SpawnerSelector(ints);
-            }
-        }
-        else
-        {
-            return ints;
-        }
-
-        return null;
+    { 
+        for(int i = 0; i < obstLimit; i++)
+        pm.SpawnRoomObject(obstacle.name, obstSpawn[Random.Range(0, obstSpawn.Count)].transform.position, Quaternion.identity);
     }
 
     public void SpawnPlayer(int ID)

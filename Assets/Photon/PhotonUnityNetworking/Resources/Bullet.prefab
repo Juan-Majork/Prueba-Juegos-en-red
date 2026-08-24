@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abfce59fb0635764db1897d69c4b9886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomTransformSync
-  smoothTransition: 50
+  smoothTransition: 100
 --- !u!114 &8727731144968889978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,4 +194,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletMovement
   rb: {fileID: 4728073619366327992}
-  speed: 1
+  speed: 50

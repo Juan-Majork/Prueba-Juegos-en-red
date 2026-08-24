@@ -61,13 +61,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         if (isMaster)
         {
-            //gm.InitializeGame();
+            gm.InitializeGame();
         }
 
         if (playerCount < 4)
         {
             gm.SpawnPlayer(playerCount);
         }
+
         else
         {
             Application.Quit();
