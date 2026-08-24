@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject bulletSpawn;
     [SerializeField] private HealthComponent health;
+
+    private float attackCD = 2;
+    private float counterCD = 0;
     
     private Vector3 direction;
 
@@ -30,8 +33,10 @@ public class PlayerController : MonoBehaviourPun
 
     private void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        counterCD += Time.deltaTime;
+        if (Input.GetMouseButtonDown(0) && counterCD > attackCD)
         {
+            counterCD = 0;
             PhotonManager.Instance.SpawnObject(bullet.name, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
         }
     }
