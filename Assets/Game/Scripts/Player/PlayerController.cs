@@ -42,9 +42,9 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
-    [PunRPC]
+
     public void TakeDamage(float damage)
     {
-        health.OnHitted(damage);
+        photonView.RPC(nameof(health.OnHitted), RpcTarget.All, 30f);
     }
 }

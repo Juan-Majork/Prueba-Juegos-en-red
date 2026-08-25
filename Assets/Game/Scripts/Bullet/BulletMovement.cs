@@ -23,11 +23,15 @@ public class BulletMovement : MonoBehaviourPun
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !photonView.IsMine)
+        if (!photonView.IsMine) return;
+
+        var other = collision.gameObject.GetComponent<PhotonView>();
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !other.IsMine)
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-            player.photonView.RPC("TakeDamage", RpcTarget.All, 30f);
+            player.TakeDamage(30f);
             Destroy(gameObject);
         }
 

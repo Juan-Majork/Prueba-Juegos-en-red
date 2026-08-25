@@ -5,11 +5,12 @@ public class HealthComponent : MonoBehaviourPun
 {
     [SerializeField] private float health;
 
+    [PunRPC]
     public void OnHitted(float damageTaken)
     {
         if(TakeDamage(damageTaken) <= 0)
         {
-            Application.Quit();
+            Destroy(gameObject);
         }
     }
 
