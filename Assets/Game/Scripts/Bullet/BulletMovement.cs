@@ -25,19 +25,20 @@ public class BulletMovement : MonoBehaviourPun
     {
         if (!photonView.IsMine) return;
 
-        var other = collision.gameObject.GetComponent<PhotonView>();
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !other.IsMine)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-
-            player.TakeDamage(30f);
             Destroy(gameObject);
         }
-
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        else
         {
-            Destroy(gameObject);
+            var other = collision.gameObject.GetComponent<PhotonView>();
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !other.IsMine)
+            {
+                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+                player.TakeDamage(30f);
+                Destroy(gameObject);
+            }
         }
     }
 }
