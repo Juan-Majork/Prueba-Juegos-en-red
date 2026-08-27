@@ -27,18 +27,24 @@ public class BulletMovement : MonoBehaviourPun
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
+            Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
         }
         else
         {
             var other = collision.gameObject.GetComponent<PhotonView>();
-            if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !other.IsMine)
+            if(!other.IsMine)
             {
-                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+                if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
-                player.TakeDamage(30f);
-                Destroy(gameObject);
+                    Debug.Log(collision.gameObject.name);
+                    player.TakeDamage(30f);
+                    Destroy(gameObject);
+                }
             }
+            
         }
     }
 }

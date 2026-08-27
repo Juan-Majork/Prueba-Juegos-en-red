@@ -17,9 +17,15 @@ public class PlayerController : MonoBehaviourPun
     void Update()
     {
         if (!photonView.IsMine) return;
+
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
+
         if (direction.sqrMagnitude > 0.001f)
-            transform.rotation = Quaternion.LookRotation(direction);
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+        }
 
         counterCD += Time.deltaTime;
         Attack();
