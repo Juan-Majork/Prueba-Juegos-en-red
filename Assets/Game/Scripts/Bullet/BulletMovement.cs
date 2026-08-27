@@ -49,7 +49,7 @@ public class BulletMovement : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void DestroyBullet(int a)
+    public void DestroyBullet()
     {
         Destroy(gameObject);
     }
