@@ -45,6 +45,6 @@ public class BulletMovement : MonoBehaviourPun
             }   
         }
 
-        PhotonNetwork.Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
