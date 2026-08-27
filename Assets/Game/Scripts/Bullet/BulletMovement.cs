@@ -17,7 +17,7 @@ public class BulletMovement : MonoBehaviourPun
         
         if (currentTime > timeLimit)
         {
-            PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
