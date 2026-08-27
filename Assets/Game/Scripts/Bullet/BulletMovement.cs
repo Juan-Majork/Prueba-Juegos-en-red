@@ -17,7 +17,7 @@ public class BulletMovement : MonoBehaviourPun
         
         if (currentTime > timeLimit)
         {
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
@@ -28,7 +28,7 @@ public class BulletMovement : MonoBehaviourPun
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             Debug.Log(collision.gameObject.name);
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
         else
         {
@@ -41,7 +41,7 @@ public class BulletMovement : MonoBehaviourPun
 
                     Debug.Log(collision.gameObject.name);
                     player.TakeDamage(30f);
-                    Destroy(gameObject);
+                    PhotonNetwork.Destroy(gameObject);
                 }
             }
             
