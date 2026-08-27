@@ -45,6 +45,12 @@ public class BulletMovement : MonoBehaviourPun
             }   
         }
 
+        photonView.RPC(nameof(DestroyBullet), RpcTarget.All);
+    }
+
+    [PunRPC]
+    public void DestroyBullet(int a)
+    {
         Destroy(gameObject);
     }
 }
