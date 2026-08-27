@@ -28,7 +28,7 @@ public class BulletMovement : MonoBehaviourPun
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             Debug.Log(collision.gameObject.name);
-            PhotonNetwork.Destroy(gameObject);
+            
         }
         else
         {
@@ -41,10 +41,10 @@ public class BulletMovement : MonoBehaviourPun
 
                     Debug.Log(collision.gameObject.name);
                     player.TakeDamage(30f);
-                    PhotonNetwork.Destroy(gameObject);
                 }
-            }
-            
+            }   
         }
+
+        PhotonNetwork.Destroy(gameObject);
     }
 }
