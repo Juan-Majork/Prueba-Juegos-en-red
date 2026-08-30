@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviourPun
     [SerializeField] private GameObject bulletSpawn;
     [SerializeField] private HealthComponent health;
 
+    public bool typingState = false;
+
     private float attackCD = 2;
     private float counterCD = 0;
     
@@ -18,17 +20,25 @@ public class PlayerController : MonoBehaviourPun
     {
         if (!photonView.IsMine) return;
 
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
-
-        if (direction.sqrMagnitude > 0.001f)
+        if (!typingState)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.Translate(direction * speed * Time.deltaTime, Space.World);
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+            if (direction.sqrMagnitude > 0.001f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+            }
+
+            counterCD += Time.deltaTime;
+            Attack();
         }
-
-        counterCD += Time.deltaTime;
-        Attack();
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SetTypingState(true);
+        }
+        
     }
 
     private void OnMove(InputValue value)
@@ -48,6 +58,10 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
+    public bool SetTypingState(bool state)
+    {
+        return typingState = state;
+    }
 
     public void TakeDamage(float damage)
     {
