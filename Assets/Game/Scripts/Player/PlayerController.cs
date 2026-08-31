@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviourPun
             counterCD += Time.deltaTime;
             Attack();
         }
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SetTypingState(true);
         }

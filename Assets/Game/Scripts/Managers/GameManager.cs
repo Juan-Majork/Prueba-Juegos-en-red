@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using TMPro;
+using Unity.Properties;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,11 +11,21 @@ public class GameManager : MonoBehaviour
     private PhotonManager pm;
     public PhotonManager Pm { set { pm = value; } }
 
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject obstacle;
-    [SerializeField] private List<GameObject> obstSpawn;
+    [Header("Player Related")]
+    [SerializeField] private GameObject playerPrefab;
+    /// <summary>
+    /// Index numbers: 0,1,2,3 => P1,P2,P3,P4
+    /// </summary>
+    [SerializeField] private List<GameObject> playerSpawners;
+
+    [Header("Obstacle Related")]
+    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private List<GameObject> obstSpawners;
     [SerializeField] private int obstLimit;
-    [SerializeField] private List<GameObject> playerXSpawners; //0,1,2,3 => P1,P2,P3,P4
+
+    [Header("Display for Players")]
+    [SerializeField] private TMP_InputField tmpInput;
+    [SerializeField] private TextMeshProUGUI chatDisplay;
 
     private void Awake()
     {
@@ -30,12 +43,16 @@ public class GameManager : MonoBehaviour
     public void InitializeGame()
     { 
         for(int i = 0; i < obstLimit; i++)
-        pm.SpawnRoomObject(obstacle.name, obstSpawn[Random.Range(0, obstSpawn.Count)].transform.position, Quaternion.identity);
+        pm.SpawnRoomObject(obstaclePrefab.name, obstSpawners[Random.Range(0, obstSpawners.Count)].transform.position, Quaternion.identity);
     }
 
     public void SpawnPlayer(int ID)
     {
-        pm.SpawnObject(player.name, playerXSpawners[ID].transform.position, Quaternion.identity);
+        GameObject currentPlayer = pm.SpawnGameObject(playerPrefab.name, playerSpawners[ID].transform.position, Quaternion.identity);
+
+
+        TypingController typingController = currentPlayer.AddComponent<TypingController>();
+        typingController.Init(tmpInput, chatDisplay, currentPlayer.GetComponent<PlayerController>());
     }
 
     public void SomePlayerWon()

@@ -80,6 +80,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate(name, position, rotation, group: 0);
     }
 
+    public GameObject SpawnGameObject(string name, Vector3 position, Quaternion rotation)
+    {
+        return PhotonNetwork.Instantiate(name, position, rotation, group: 0);
+    }
+
     public void SpawnRoomObject(string name, Vector3 position, Quaternion rotation)
     {
         PhotonNetwork.InstantiateRoomObject(name, position, rotation, group: 0);

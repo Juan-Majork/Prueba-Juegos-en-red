@@ -10,20 +10,26 @@ using Unity.VisualScripting;
 
 public class TypingController : MonoBehaviourPunCallbacks, IOnEventCallback
 {
-    [SerializeField] private TMP_InputField tmpTyper;
-    [SerializeField] private TextMeshProUGUI chatDisplay;
-    [SerializeField] private PlayerController player;
-    [SerializeField] private int maxVisibleLines = 5;
-
     public const byte TypingControllerEventCode = 1;
+
+    private TMP_InputField tmpInput;
+    private TextMeshProUGUI chatDisplay;
+    private PlayerController player;
+
+    [SerializeField] private int maxVisibleLines = 5;
 
     private List<string> chatLines = new List<string>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public void Init(TMP_InputField input, TextMeshProUGUI chat, PlayerController player)
     {
-        tmpTyper.text = "Press 'T' to type.";
-        tmpTyper.onSubmit.AddListener(OnChatSubmit);
+        tmpInput = input;
+        chatDisplay = chat;
+        this.player = player;
+
+        tmpInput.text = "Press '1' to type.";
+        tmpInput.onSubmit.AddListener(OnChatSubmit);
     }
 
     // Update is called once per frame
@@ -31,11 +37,11 @@ public class TypingController : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         if (!photonView.IsMine) return;
         
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            tmpTyper.gameObject.SetActive(true);
-            tmpTyper.text = "";
-            tmpTyper.ActivateInputField();
+            tmpInput.gameObject.SetActive(true);
+            tmpInput.text = "";
+            tmpInput.ActivateInputField();
         }
     }
 
@@ -44,8 +50,8 @@ public class TypingController : MonoBehaviourPunCallbacks, IOnEventCallback
         if (!string.IsNullOrWhiteSpace(message))
             SendChatMessageEvent(message.Trim());
 
-        tmpTyper.text = "Press 'T' to type.";
-        tmpTyper.DeactivateInputField();
+        tmpInput.text = "Press '1' to type.";
+        tmpInput.DeactivateInputField();
 
         player.SetTypingState(false);
     }
@@ -92,13 +98,15 @@ public class TypingController : MonoBehaviourPunCallbacks, IOnEventCallback
         return t.ToString(@"hh\:mm\:ss");
     }
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         PhotonNetwork.AddCallbackTarget(this);
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
         PhotonNetwork.RemoveCallbackTarget(this);
     }
 }

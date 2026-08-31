@@ -318,7 +318,6 @@ GameObject:
   - component: {fileID: -5735657926843360298}
   - component: {fileID: 4249145555695436167}
   - component: {fileID: -2912275216844220197}
-  - component: {fileID: -314008711226495252}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -540,22 +539,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &-314008711226495252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4103962590609860660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 781e2855524a5fc4682fba19f28ff160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TypingController
-  tmpTyper: {fileID: 0}
-  chatDisplay: {fileID: 0}
-  player: {fileID: 0}
-  maxVisibleLines: 5
 --- !u!1 &4996560551930352115
 GameObject:
   m_ObjectHideFlags: 0

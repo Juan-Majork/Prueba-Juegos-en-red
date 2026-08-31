@@ -608,9 +608,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473ff1f7ffb5224d81435d73d30102b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player: {fileID: 4103962590609860660, guid: f29ced91fdddb514f844d6a2af138904, type: 3}
-  obstacle: {fileID: 7263396503270502004, guid: 12b25970820e67c4d99fc5d6763a3d02, type: 3}
-  obstSpawn:
+  playerPrefab: {fileID: 4103962590609860660, guid: f29ced91fdddb514f844d6a2af138904, type: 3}
+  playerSpawners:
+  - {fileID: 1933835926}
+  - {fileID: 625042725}
+  - {fileID: 1691354366}
+  - {fileID: 83421451}
+  obstaclePrefab: {fileID: 7263396503270502004, guid: 12b25970820e67c4d99fc5d6763a3d02, type: 3}
+  obstSpawners:
   - {fileID: 1481814355}
   - {fileID: 984067300}
   - {fileID: 734751707}
@@ -636,11 +641,8 @@ MonoBehaviour:
   - {fileID: 1346972598}
   - {fileID: 440596787}
   obstLimit: 4
-  playerXSpawners:
-  - {fileID: 1933835926}
-  - {fileID: 625042725}
-  - {fileID: 1691354366}
-  - {fileID: 83421451}
+  tmpInput: {fileID: 273185311}
+  chatDisplay: {fileID: 1094536932}
 --- !u!4 &347679805
 Transform:
   m_ObjectHideFlags: 0
@@ -1142,7 +1144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press 'T' to chat.
+  m_text: Press '1' to chat.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1478,7 +1480,7 @@ GameObject:
   - component: {fileID: 1094536933}
   - component: {fileID: 1094536932}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
