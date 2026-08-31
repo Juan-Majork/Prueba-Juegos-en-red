@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviourPun
 
     public void TakeDamage(float damage)
     {
-        photonView.RPC(nameof(health.OnHitted), RpcTarget.All, 30f);
+        photonView.RPC(nameof(health.OnHitted), RpcTarget.All, damage);
     }
+
+
 }
