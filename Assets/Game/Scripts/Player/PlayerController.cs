@@ -54,8 +54,14 @@ public class PlayerController : MonoBehaviourPun
         if (Input.GetMouseButtonDown(0) && counterCD > attackCD)
         {
             counterCD = 0;
-            PhotonManager.Instance.SpawnObject(bullet.name, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+            BulletMovement attack = PhotonManager.Instance.SpawnGameObject(bullet.name, bulletSpawn.transform.position, bulletSpawn.transform.rotation).GetComponent<BulletMovement>();
+            attack.owner = this;
         }
+    }
+
+    public void DestroyAttack(GameObject gameObject)
+    {
+        PhotonManager.Instance.DestroyObject(gameObject);
     }
 
     public bool SetTypingState(bool state)

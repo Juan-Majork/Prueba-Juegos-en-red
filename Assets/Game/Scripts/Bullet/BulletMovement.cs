@@ -4,6 +4,8 @@ using UnityEngine.Rendering;
 
 public class BulletMovement : MonoBehaviourPun
 {
+    public PlayerController owner;
+
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
     private float timeLimit = 2;
@@ -17,7 +19,7 @@ public class BulletMovement : MonoBehaviourPun
         
         if (currentTime > timeLimit)
         {
-            Destroy(gameObject);
+            owner.DestroyAttack(gameObject);
         }
     }
 
@@ -51,6 +53,6 @@ public class BulletMovement : MonoBehaviourPun
     [PunRPC]
     public void DestroyBullet()
     {
-        Destroy(gameObject);
+        owner.DestroyAttack(gameObject);
     }
 }

@@ -89,4 +89,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.InstantiateRoomObject(name, position, rotation, group: 0);
     }
+
+    public void DestroyObject(GameObject obj)
+    {
+        PhotonNetwork.Destroy(obj);
+    }
 }
