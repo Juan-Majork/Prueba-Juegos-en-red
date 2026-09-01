@@ -19,7 +19,7 @@ public class BulletMovement : MonoBehaviourPun
         
         if (currentTime > timeLimit)
         {
-            owner.DestroyAttack(gameObject);
+            photonView.RPC(nameof(DestroyBullet), RpcTarget.All);
         }
     }
 
